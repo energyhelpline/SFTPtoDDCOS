@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7DB50F31-A107-46F1-8F43-1EC2E4845FFA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>SFTPtoDDCOS.Service1</StartupObject>
+    <StartupObject>SFTPtoDDCOS.SFTPtoDDCOS</StartupObject>
     <RootNamespace>SFTPtoDDCOS</RootNamespace>
     <AssemblyName>SFTPtoDDCOS</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -93,11 +93,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
-    <Compile Include="Service1.vb">
+    <Compile Include="SFTPtoDDCOS.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Service1.Designer.vb">
-      <DependentUpon>Service1.vb</DependentUpon>
+    <Compile Include="SFTPtoDDCOS.Designer.vb">
+      <DependentUpon>SFTPtoDDCOS.vb</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
@@ -121,8 +121,8 @@
     <EmbeddedResource Include="ProjectInstaller.resx">
       <DependentUpon>ProjectInstaller.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Service1.resx">
-      <DependentUpon>Service1.vb</DependentUpon>
+    <EmbeddedResource Include="SFTPtoDDCOS.resx">
+      <DependentUpon>SFTPtoDDCOS.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

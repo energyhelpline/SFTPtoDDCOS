@@ -74,46 +74,10 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("192.168.10.18")>  _
-        Public ReadOnly Property smtpserver() As String
-            Get
-                Return CType(Me("smtpserver"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("smtpsend")>  _
-        Public ReadOnly Property smtppassword() As String
-            Get
-                Return CType(Me("smtppassword"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("ddcossftp@firsthelpline.com")>  _
-        Public ReadOnly Property smtpmailfrom() As String
-            Get
-                Return CType(Me("smtpmailfrom"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("30")>  _
         Public ReadOnly Property timerinterval() As Integer
             Get
                 Return CType(Me("timerinterval"),Integer)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("fundraising\smtpsend")>  _
-        Public ReadOnly Property smtpusername() As String
-            Get
-                Return CType(Me("smtpusername"),String)
             End Get
         End Property
         
@@ -214,6 +178,27 @@ Namespace My
             Get
                 Return CType(Me("tempfolder"),String)
             End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("csv")>  _
+        Public ReadOnly Property fileextension() As String
+            Get
+                Return CType(Me("fileextension"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("errored")>  _
+        Public Property errorfolder() As String
+            Get
+                Return CType(Me("errorfolder"),String)
+            End Get
+            Set
+                Me("errorfolder") = value
+            End Set
         End Property
     End Class
 End Namespace

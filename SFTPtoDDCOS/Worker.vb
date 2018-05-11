@@ -8,6 +8,7 @@ Public Class Worker
     Private mMain As System.Threading.Thread
     Shared userdata As IUserData = UserDataFromConfig.GetUserData()
     Shared es As ExchangeService = Service.ConnectToService(userdata)
+    Private sftperrortxt As String = ""
 
 
     Public Sub DoWork()
@@ -16,9 +17,9 @@ Public Class Worker
         mMain.Name = "OPSThread"
         'Loop to perform the main jobs you wish to run.
         While Not mMustStop
-            MainLoop()
             'Period to wait 
-            System.Threading.Thread.Sleep(My.Settings.timerinterval * 60000)
+            System.Threading.Thread.Sleep(My.Settings.timerinterval * 1000)
+            MainLoop()
         End While
 
     End Sub
@@ -40,8 +41,14 @@ Public Class Worker
 
         Catch ex As Exception
             My.Application.Log.WriteException(ex, TraceEventType.Error, ex.StackTrace)
-            'sendmail("Exception has occured on " & My.Computer.Name, , , , ex.ToString)
+            Dim em As EmailMessage = New EmailMessage(es)
+            em.Subject = "*** SFTPDDCOS Service Error ***"
+            em.Body = New MessageBody(BodyType.Text, "The following exception occured " + vbNewLine + vbNewLine + ex.ToString)
 
+            em.ToRecipients.Add(My.Settings.emailalerts)
+            'em.From.Address = My.Settings.emailuseraddress
+            em.SendAndSaveCopy()
+           
         End Try
 
     End Sub
@@ -69,7 +76,7 @@ Public Class Worker
                     If TypeOf attachy Is FileAttachment Then
                         'is the file the one we want? check it matches the file extension
                         Dim dotposition = attachy.Name.LastIndexOf(".")
-                        If attachy.Name.Substring(dotposition + 1) <> "txt" Then
+                        If attachy.Name.Substring(dotposition + 1) <> My.Settings.fileextension Then
                             Continue For
 
                         End If
@@ -89,13 +96,14 @@ Public Class Worker
                             My.Application.Log.WriteEntry("Successfully uploaded " + attachy.Name)
                         Else
                             'something went wrong with the SFTP upload
-                            Dim em As EmailMessage = New EmailMessage(es) With {
-                                .Subject = "*** SFTPDDCOS upload Failure ***",
-                                .Body = "Failed to upload " + attachy.Name
-                                }
+                            Dim em As EmailMessage = New EmailMessage(es)
+                            em.Subject = "*** SFTPDDCOS upload Failure ***"
+                            em.Body = New MessageBody(BodyType.Text, "Failed to upload " + attachy.Name + vbNewLine + vbNewLine + sftperrortxt)
                             em.ToRecipients.Add(My.Settings.emailalerts)
-                            em.From.Address = My.Settings.smtpmailfrom
                             em.SendAndSaveCopy()
+                            Dim destfolder As FolderId = FindFolderIdByDisplayName(es, My.Settings.errorfolder, WellKnownFolderName.Inbox)
+                            Dim msg As Item = Item.Bind(es, mailitem.Id)
+                            msg.Move(destfolder)
                         End If
                         filestream.Dispose()
 
@@ -121,6 +129,7 @@ Public Class Worker
             client.UploadFile(inputfile, "/" + fname)
             Sftpfile = True
         Catch ex As Exception
+            sftperrortxt = ex.Message + vbCrLf + vbCrLf + ex.StackTrace.ToString
 
             Sftpfile = False
         Finally
@@ -137,7 +146,7 @@ Public Class Worker
     Public Shared Function FindFolderIdByDisplayName(ByVal service As ExchangeService, ByVal DisplayName As String, ByVal SearchFolder As WellKnownFolderName) As FolderId
         Dim rootFolder As Folder = Folder.Bind(service, SearchFolder)
         For Each folder As Folder In rootFolder.FindFolders(New FolderView(100))
-            If folder.DisplayName = DisplayName Then
+            If UCase(folder.DisplayName) = UCase(DisplayName) Then
                 Return folder.Id
             End If
         Next

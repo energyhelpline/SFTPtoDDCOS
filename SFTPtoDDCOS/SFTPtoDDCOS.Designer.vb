@@ -1,7 +1,7 @@
 ﻿Imports System.ServiceProcess
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Service1
+Partial Class SFTPtoDDCOS
     Inherits System.ServiceProcess.ServiceBase
 
     'UserService overrides dispose to clean up the component list.
@@ -28,7 +28,7 @@ Partial Class Service1
         '
         '   ServicesToRun = New System.ServiceProcess.ServiceBase () {New Service1, New MySecondUserService}
         '
-        ServicesToRun = New System.ServiceProcess.ServiceBase() {New Service1}
+        ServicesToRun = New System.ServiceProcess.ServiceBase() {New SFTPtoDDCOS}
 
         System.ServiceProcess.ServiceBase.Run(ServicesToRun)
     End Sub
@@ -51,7 +51,7 @@ Partial Class Service1
         '
         'Service1
         '
-        Me.ServiceName = "Service1"
+        Me.ServiceName = "DDCOSSFTP_Service"
         CType(Me.EventLog1, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub

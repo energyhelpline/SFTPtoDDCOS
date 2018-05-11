@@ -1,4 +1,4 @@
-﻿Public Class Service1
+﻿Public Class SFTPtoDDCOS
     Private worker As New Worker()
     Protected Overrides Sub OnStart(ByVal args() As String)
 
