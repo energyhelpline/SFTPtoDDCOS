@@ -1,0 +1,60 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="emailalerts" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">steve.harrison@firsthelpline.com</Value>
+    </Setting>
+    <Setting Name="exceptionsemail" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">steve.harrison@firsthelpline.com</Value>
+    </Setting>
+    <Setting Name="smtpserver" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">192.168.10.18</Value>
+    </Setting>
+    <Setting Name="smtppassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">smtpsend</Value>
+    </Setting>
+    <Setting Name="smtpmailfrom" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ddcossftp@firsthelpline.com</Value>
+    </Setting>
+    <Setting Name="timerinterval" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="smtpusername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">fundraising\smtpsend</Value>
+    </Setting>
+    <Setting Name="email_user" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SFTPDDCOS</Value>
+    </Setting>
+    <Setting Name="email_password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1q2w3e4r%T</Value>
+    </Setting>
+    <Setting Name="foldertomoveto" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Processed</Value>
+    </Setting>
+    <Setting Name="email_domain" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Fundraising</Value>
+    </Setting>
+    <Setting Name="sftpusername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">testsftp</Value>
+    </Setting>
+    <Setting Name="sftppassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1q2w3e4r%T</Value>
+    </Setting>
+    <Setting Name="sftphost" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">192.168.10.10</Value>
+    </Setting>
+    <Setting Name="sftpfingerprint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ssh-rsa 1024 98:f4:ac:75:a0:28:60:da:d2:a9:1b:73:b4:9e:fb:4a</Value>
+    </Setting>
+    <Setting Name="emailuseraddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SFTPDDCOS@firsthelpline.com</Value>
+    </Setting>
+    <Setting Name="autodiscoveruri" Type="System.Uri" Scope="Application">
+      <Value Profile="(Default)">https://autodiscover.firsthelpline.com</Value>
+    </Setting>
+    <Setting Name="tempfolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\temp</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
